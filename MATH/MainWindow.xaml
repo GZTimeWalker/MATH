@@ -5,8 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MATH"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Background="#FFFAFAFA" 
+        Title="MATH" Height="350" Width="525">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <ComboBox x:Name="ItemsBox" HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" VerticalAlignment="Top" Width="215" FontSize="18" FontFamily="Microsoft YaHei UI" SelectionChanged="ItemsBox_SelectionChanged">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="#FFDFDFDF" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <Label Content="OutPut" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="0,10,0,0" VerticalAlignment="Top" Width="110" FontSize="18"/>
+        <TextBox x:Name="Point_1_x" HorizontalAlignment="Left" Height="30" Margin="120,61,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="58" FontSize="14" Cursor="Pen" MaxLines="2147483646" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="Try_Int"/>
+        <TextBox x:Name="Point_1_y" HorizontalAlignment="Left" Height="30" Margin="183,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" FontSize="14" Cursor="Pen" MaxLines="2147483646" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="Try_Int"/>
+        <TextBox x:Name="Point_2_x" HorizontalAlignment="Left" Height="30" Margin="120,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" FontSize="14" Cursor="Pen" MaxLines="2147483646" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="Try_Int"/>
+        <TextBox x:Name="Point_2_y" HorizontalAlignment="Left" Height="30" Margin="183,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" FontSize="14" Cursor="Pen" MaxLines="2147483646" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="Try_Int"/>
+        <TextBox x:Name="Point_3_x" HorizontalAlignment="Left" Height="30" Margin="120,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" FontSize="14" Cursor="Pen" MaxLines="2147483646" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="Try_Int"/>
+        <TextBox x:Name="Point_3_y" HorizontalAlignment="Left" Height="30" Margin="183,131,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="58" FontSize="14" Cursor="Pen" MaxLines="2147483646" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="Try_Int"/>
+        <TextBox x:Name="Line_1_A" HorizontalAlignment="Left" Height="30" Margin="57,166,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="58" FontSize="14" Cursor="Pen" MaxLines="2147483646" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="Try_Int"/>
+        <TextBox x:Name="Line_1_B" HorizontalAlignment="Left" Height="30" Margin="120,166,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="58" FontSize="14" Cursor="Pen" MaxLines="2147483646" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="Try_Int"/>
+        <TextBox x:Name="Line_1_C" HorizontalAlignment="Left" Height="30" Margin="183,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" FontSize="14" Cursor="Pen" MaxLines="2147483646" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="Try_Int"/>
+        <TextBox x:Name="Line_2_A" HorizontalAlignment="Left" Height="30" Margin="57,201,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="58" FontSize="14" Cursor="Pen" MaxLines="2147483646" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="Try_Int"/>
+        <TextBox x:Name="Line_2_B" HorizontalAlignment="Left" Height="30" Margin="120,201,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="58" FontSize="14" Cursor="Pen" MaxLines="2147483646" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="Try_Int"/>
+        <TextBox x:Name="Line_2_C" HorizontalAlignment="Left" Height="30" Margin="183,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" FontSize="14" Cursor="Pen" MaxLines="2147483646" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="Try_Int" />
+        <Label Content="Point1" HorizontalAlignment="Left" Height="30" Margin="10,61,0,0" VerticalAlignment="Top" Width="46" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Point3" HorizontalAlignment="Left" Height="30" Margin="10,131,0,0" VerticalAlignment="Top" Width="46" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Point2" HorizontalAlignment="Left" Height="30" Margin="10,96,0,0" VerticalAlignment="Top" Width="46" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Line1" HorizontalAlignment="Left" Height="30" Margin="11,166,0,0" VerticalAlignment="Top" Width="46" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Line2" HorizontalAlignment="Left" Height="30" Margin="11,201,0,0" VerticalAlignment="Top" Width="46" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button x:Name="Run_Botton" Content="计算" HorizontalAlignment="Left" Height="30" Margin="11,271,0,0" VerticalAlignment="Top" Width="81" Click="Run_Botton_Click"/>
+        <Button x:Name="Clear_Botton" Content="清空" HorizontalAlignment="Left" Height="30" Margin="97,271,0,0" VerticalAlignment="Top" Width="81" Click="Clear_Botton_Click"/>
+        <Label Content="目前只适用于整数/小数输入及结果" HorizontalAlignment="Left" Height="30" Margin="11,236,0,0" VerticalAlignment="Top" Width="196" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="OutPutTextBox" FontSize="14" Grid.Column="1" HorizontalAlignment="Left" Margin="0,45,0,-0.2" TextWrapping="Wrap" Text="" Width="260" IsReadOnly="True"/>
     </Grid>
 </Window>
