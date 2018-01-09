@@ -74,7 +74,7 @@ namespace MATH
         {
             if(l1.B * l2.A - l1.A * l2.B == 0)
             {
-                Data.OutPutText = Line_To_String(l1) + "与\n";
+                Data.OutPutText += Line_To_String(l1) + "与\n";
                 Data.OutPutText += Line_To_String(l2) + "\n";
                 Data.OutPutText += "所表示直线平行或重合，无交点";
                 Data.OutPutTitle = "输入直线无交点";
