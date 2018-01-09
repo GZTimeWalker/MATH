@@ -144,7 +144,7 @@ namespace MATH
         }
         private void Run_Botton_Click(object sender, RoutedEventArgs e)
         {
-            if (ItemsBox.SelectedItem.ToString() == null)
+            if (ItemsBox.SelectedItem == null)
             {
                 MessageBox.Show("请选择计算需求", "错误");
                 return;
