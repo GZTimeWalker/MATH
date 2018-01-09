@@ -234,6 +234,12 @@ namespace MATH
             S = Math.Abs(P1.x * (P2.y - P3.y) + P2.x * (P3.y - P1.y) + P3.x * (P1.y - P2.y)) / 2;
             if (S == 0)
             {
+                if((P1.y == P2.y && P1.x == P2.x) || (P1.y == P3.y&&P1.x == P3.x) || (P2.x ==P3.x && P2.y == P3.y))
+                {
+                    Data.OutPutTitle = "有点重合";
+                    Data.OutPutText += Point_To_String(P1) + "," + Point_To_String(P2) + "," + Point_To_String(P3) + "中有点重合\n";
+                    return S;
+                }
                 Data.OutPutTitle = "三点共线";
                 Data.OutPutText += Point_To_String(P1) + "," + Point_To_String(P2) + "," + Point_To_String(P3) + "三点共线\n";
                 Line line = new Line();
@@ -253,6 +259,7 @@ namespace MATH
                 }
                 Data.OutPutText += "化简结果为:\n" + Line_To_String(line) + "\n(小数分数求最大公因数会遇到问题)\n";
                 Data.OutPutText += "-------------------------\r\n";
+                return S;
             }
             Data.OutPutTitle = "成功求得面积";
             Data.OutPutText += Point_To_String(P1) + "," + Point_To_String(P2) + "," + Point_To_String(P3) + "三点的面积为\n";
