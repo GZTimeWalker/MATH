@@ -142,7 +142,6 @@ namespace MATH
                     break;
             }
         }
-
         private void Run_Botton_Click(object sender, RoutedEventArgs e)
         {
             if (ItemsBox.SelectedItem.ToString() == null)

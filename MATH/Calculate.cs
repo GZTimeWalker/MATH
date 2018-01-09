@@ -8,13 +8,28 @@ namespace MATH
 {
     class Point
     {
+        /// <summary>
+        /// x坐标
+        /// </summary>
         public double x;
+        /// <summary>
+        /// y坐标
+        /// </summary>
         public double y;
     }
     class Line
     {
+        /// <summary>
+        /// 直线一般式参数A
+        /// </summary>
         public double A;
+        /// <summary>
+        /// 直线一般式参数B
+        /// </summary>
         public double B;
+        /// <summary>
+        /// 直线一般式参数C
+        /// </summary>
         public double C;
     }
     class Circle
