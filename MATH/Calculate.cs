@@ -70,11 +70,11 @@ namespace MATH
         {
             string str = "";
             str = "(x";
-            if(circle.a < 0) { str += circle.a + ")^2+(y"; }
-            else if (circle.a > 0) { str += "+" + circle.a + ")^2+(y"; }
+            if(circle.a < 0) { str += "+"+Math.Abs(circle.a) + ")^2+(y"; }
+            else if (circle.a > 0) { str += "-" + circle.a + ")^2+(y"; }
             else { str += ")^2+(y"; }
-            if (circle.b < 0) { str += circle.b + ")^2="; }
-            else if (circle.b > 0) { str += "+" + circle.b+ ")^2="; }
+            if (circle.b < 0) { str += "+"+Math.Abs(circle.b) + ")^2="; }
+            else if (circle.b > 0) { str += "-" + circle.b+ ")^2="; }
             else { str += ")^2="; }
             str += circle.r;
             return str;
