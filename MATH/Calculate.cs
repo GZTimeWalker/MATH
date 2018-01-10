@@ -57,12 +57,100 @@ namespace MATH
         public string Line_To_String(Line line)
         {
             string str = "";
-            if (line.A != 0) { str = line.A + "x"; }
-            if (line.B < 0) { str += line.B + "y"; }
+            if (line.A == 0 && line.B == 0)
+            {
+                Data.OutPutTitle = "直线不存在";
+                Data.OutPutText += "直线参数A,B同时为0";
+                return "[错误的直线]";
+            }
+            /*
+            if(line.A==1) { str ="x"; }
+            else if (line.A == -1) { str = "-x"; }
+            else if (line.A != 0) { str = line.A + "x"; }
+
+            if(line.B == 1 && line.A != 0) { str += "+y"; }
+            else if (line.B == 1 && line.A == 0) { str += "y"; }
+            else if (line.B == -1 && line.A!= 0) { str += "-y"; }
+            else if (line.B == -1 && line.A == 0) { str += "y"; }
+            else if (line.B < 0 && line.A != 0) { str += line.B + "y"; }
+            else if (line.B < 0 && line.A == 0) { str += -line.B + "y"; }
             else if (line.B > 0 && line.A != 0) { str += "+" + line.B + "y"; }
             else if (line.B > 0 && line.A == 0) { str += line.B + "y"; }
-            if (line.C < 0) { str += line.C; }
-            else if (line.C > 0) { str += "+" + line.C; }
+
+            if (line.B < 0 && line.A == 0 && line.C < 0) { str += "+"+-line.C; }
+            else if (line.B < 0 && line.A == 0 && line.C > 0) { str += -line.C; }
+            else if (line.B > 0 && line.A == 0 && line.C < 0) { str += line.C; }
+            else if (line.B > 0 && line.A == 0 && line.C > 0) { str += "+" + line.C; }
+            else if (line.B == 0 && line.A > 0 && line.C < 0) { str += "+" + line.C; }
+            else if (line.B == 0 && line.A < 0 && line.C > 0) { str += "+" + line.C; }
+            */
+            //判断是否变号
+            bool reversal = false;
+            if ((line.A == 0 && line.B < 0) || line.A < 0) reversal = true;
+
+            if (reversal)
+            {
+                if (Math.Abs(line.A) == 1) { str = "x"; }
+                else if (line.A != 0) { str = Math.Abs(line.A) + "x"; }
+                if (line.B > 0)
+                {
+                    if (line.B == 1) { str += "-y"; }
+                    else { str += -line.B + "y"; }
+                }
+                else if (line.B < 0)
+                {
+                    if (line.A != 0)
+                    {
+                        if (line.B == -1) { str += "+y"; }
+                        else { str += "+" + -line.B + "y"; }
+                    }
+                    else
+                    {
+                        if (line.B == -1) { str += "y"; }
+                        else { str += -line.B + "y"; }
+                    }
+                }
+                if (line.C > 0)
+                {
+                    str += -line.C ; 
+                }
+                else if (line.C < 0)
+                {
+                    str += "+" + -line.C;
+                }
+            }
+            else
+            {
+                if (Math.Abs(line.A) == 1) { str = "x"; }
+                else if (line.A != 0) { str = Math.Abs(line.A) + "x"; }
+                if (line.B > 0)
+                {
+                    if(line.A != 0)
+                    {
+                        if (line.B == 1) { str += "+y"; }
+                        else { str += "+" + line.B + "y"; }
+                    }
+                    else
+                    {
+                        if (line.B == 1) { str += "y"; }
+                        else { str += line.B + "y"; }
+                    }
+                }
+                else if (line.B < 0)
+                {
+                    if (line.B == -1) { str += "-y"; }
+                    else { str += line.B + "y"; }
+                }
+                if (line.C > 0)
+                {
+                    str += "+"+line.C;
+                }
+                else if (line.C < 0)
+                {
+                    str += line.C;
+                }
+            }
+
             str += "=0";
             return str;
         }
@@ -78,6 +166,23 @@ namespace MATH
             else { str += ")^2="; }
             str += circle.r;
             return str;
+        }
+        public Line SimplifyLine(Line l)
+        {
+            Line line = new Line();
+            double k = data.GCD(data.GCD(l.A, l.B), l.C);
+            line.A = l.A / k;
+            line.B = l.B / k;
+            line.C = l.C / k;
+            if (line.A < 0)
+            {
+                line.A = -line.A;
+                line.B = -line.B;
+                line.C = -line.C;
+            }
+            Data.OutPutText += "化简结果为:\n" + Line_To_String(line) + "\n(小数分数求最大公因数会遇到问题)\n";
+            Data.OutPutText += "-------------------------\r\n";
+            return line;
         }
         /// <summary>
         /// 两直线交点
@@ -157,18 +262,7 @@ namespace MATH
             Data.OutPutText += "点" + Point_To_String(P1) + "和\n";
             Data.OutPutText += "点" + Point_To_String(P2) + "的中垂线为\n";
             Data.OutPutText += Line_To_String(line) + "\n";
-            double k = data.GCD(data.GCD(line.A, line.B), line.C);
-            line.A = line.A / k;
-            line.B = line.B / k;
-            line.C = line.C / k;
-            if(line.A<0)
-            {
-                line.A = -line.A;
-                line.B = -line.B;
-                line.C = -line.C;
-            }
-            Data.OutPutText += "化简结果为:\n"+Line_To_String(line) + "\n(小数分数求最大公因数会遇到问题)\n";
-            Data.OutPutText += "-------------------------\r\n";
+            line = SimplifyLine(line);
             return line;
         }
         /// <summary>
@@ -213,7 +307,7 @@ namespace MATH
             if (center == null)
             {
                 Data.OutPutTitle = "圆心出错";
-                Data.OutPutText += "\n已终止计算";
+                Data.OutPutText += "\n已终止计算\n";
                 Data.OutPutText += "-------------------------\r\n";
                 return null;
             }
@@ -262,18 +356,7 @@ namespace MATH
                 line.B = (P2.x - P1.x);
                 line.C = P1.x * P2.y - P1.y * P2.x;
                 Data.OutPutText += "于直线"+Line_To_String(line) + "\n";
-                double k = data.GCD(data.GCD(line.A, line.B), line.C);
-                line.A = line.A / k;
-                line.B = line.B / k;
-                line.C = line.C / k;
-                if (line.A < 0)
-                {
-                    line.A = -line.A;
-                    line.B = -line.B;
-                    line.C = -line.C;
-                }
-                Data.OutPutText += "化简结果为:\n" + Line_To_String(line) + "\n(小数分数求最大公因数会遇到问题)\n";
-                Data.OutPutText += "-------------------------\r\n";
+                line = SimplifyLine(line);
                 return S;
             }
             Data.OutPutTitle = "成功求得面积";
