@@ -63,9 +63,16 @@ namespace MATH
                 Data.OutPutText += "直线参数A,B同时为0";
                 return "[错误的直线]";
             }
-            if (line.A != 0) { str = line.A + "x"; }
+            /*
+            if(line.A==1) { str ="x"; }
+            else if (line.A == -1) { str = "-x"; }
+            else if (line.A != 0) { str = line.A + "x"; }
 
-            if (line.B < 0 && line.A != 0) { str += line.B + "y"; }
+            if(line.B == 1 && line.A != 0) { str += "+y"; }
+            else if (line.B == 1 && line.A == 0) { str += "y"; }
+            else if (line.B == -1 && line.A!= 0) { str += "-y"; }
+            else if (line.B == -1 && line.A == 0) { str += "y"; }
+            else if (line.B < 0 && line.A != 0) { str += line.B + "y"; }
             else if (line.B < 0 && line.A == 0) { str += -line.B + "y"; }
             else if (line.B > 0 && line.A != 0) { str += "+" + line.B + "y"; }
             else if (line.B > 0 && line.A == 0) { str += line.B + "y"; }
@@ -74,6 +81,75 @@ namespace MATH
             else if (line.B < 0 && line.A == 0 && line.C > 0) { str += -line.C; }
             else if (line.B > 0 && line.A == 0 && line.C < 0) { str += line.C; }
             else if (line.B > 0 && line.A == 0 && line.C > 0) { str += "+" + line.C; }
+            else if (line.B == 0 && line.A > 0 && line.C < 0) { str += "+" + line.C; }
+            else if (line.B == 0 && line.A < 0 && line.C > 0) { str += "+" + line.C; }
+            */
+            //判断是否变号
+            bool reversal = false;
+            if ((line.A == 0 && line.B < 0) || line.A < 0) reversal = true;
+
+            if (reversal)
+            {
+                if (Math.Abs(line.A) == 1) { str = "x"; }
+                else if (line.A != 0) { str = Math.Abs(line.A) + "x"; }
+                if (line.B > 0)
+                {
+                    if (line.B == 1) { str += "-y"; }
+                    else { str += -line.B + "y"; }
+                }
+                else if (line.B < 0)
+                {
+                    if (line.A != 0)
+                    {
+                        if (line.B == -1) { str += "+y"; }
+                        else { str += "+" + -line.B + "y"; }
+                    }
+                    else
+                    {
+                        if (line.B == -1) { str += "y"; }
+                        else { str += -line.B + "y"; }
+                    }
+                }
+                if (line.C > 0)
+                {
+                    str += -line.C ; 
+                }
+                else if (line.C < 0)
+                {
+                    str += "+" + -line.C;
+                }
+            }
+            else
+            {
+                if (Math.Abs(line.A) == 1) { str = "x"; }
+                else if (line.A != 0) { str = Math.Abs(line.A) + "x"; }
+                if (line.B > 0)
+                {
+                    if(line.A != 0)
+                    {
+                        if (line.B == 1) { str += "+y"; }
+                        else { str += "+" + line.B + "y"; }
+                    }
+                    else
+                    {
+                        if (line.B == 1) { str += "y"; }
+                        else { str += line.B + "y"; }
+                    }
+                }
+                else if (line.B < 0)
+                {
+                    if (line.B == -1) { str += "-y"; }
+                    else { str += line.B + "y"; }
+                }
+                if (line.C > 0)
+                {
+                    str += "+"+line.C;
+                }
+                else if (line.C < 0)
+                {
+                    str += line.C;
+                }
+            }
 
             str += "=0";
             return str;

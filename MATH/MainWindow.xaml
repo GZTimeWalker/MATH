@@ -38,7 +38,7 @@
         <Label Content="Point2" HorizontalAlignment="Left" Height="30" Margin="10,96,0,0" VerticalAlignment="Top" Width="46" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label Content="Line1" HorizontalAlignment="Left" Height="30" Margin="11,166,0,0" VerticalAlignment="Top" Width="46" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label Content="Line2" HorizontalAlignment="Left" Height="30" Margin="11,201,0,0" VerticalAlignment="Top" Width="46" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button x:Name="Run_Botton" Content="计算" HorizontalAlignment="Left" Height="30" Margin="11,271,0,0" VerticalAlignment="Top" Width="81" Click="Run_Botton_Click"/>
+        <Button x:Name="Run_Botton" Content="计算" HorizontalAlignment="Left" Height="30" Margin="11,271,0,0" VerticalAlignment="Top" Width="81" Click="Run_Botton_Click" IsDefault="True"/>
         <Button x:Name="Clear_Botton" Content="清空" HorizontalAlignment="Left" Height="30" Margin="97,271,0,0" VerticalAlignment="Top" Width="81" Click="Clear_Botton_Click"/>
         <Label Content="目前只适用于整数/小数输入及结果" HorizontalAlignment="Left" Height="30" Margin="11,236,0,0" VerticalAlignment="Top" Width="196" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
         <TextBox x:Name="OutPutTextBox" FontSize="14" Grid.Column="1" HorizontalAlignment="Left" Margin="0,45,0,-0.2" TextWrapping="Wrap" Text="" Width="260" IsReadOnly="True"/>
